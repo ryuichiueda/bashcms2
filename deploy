@@ -1,0 +1,27 @@
+#!/bin/bash -eux
+
+contents="bashcms2_contents"
+contents_owner="ryuichiueda"
+wwwdir="/var/www"
+contentsdir="$wwwdir/$contents"
+appdir="$wwwdir/bashcms2"
+
+[ "$USER" = "root" ] # USER MUST BE ROOT
+
+### INSTALL THIS SYSTEM ###
+rsync -av --delete "$(dirname $0)/bin/" "$appdir/"
+chown www-data:www-data "$appdir" -R
+
+### EDIT FETCH CGI ###
+cd "$appdir"
+sed -i "s;@@@;$contentsdir;" "fetch"
+rnd=$(cat /dev/urandom | tr -cd 0-9a-zA-Z | head -c 32)
+mv "fetch" "fetch_$rnd.cgi"
+
+### PULL DATA ###
+rm -rf "${contentsdir:?}"
+cd "$wwwdir"
+git clone "https://github.com/$contents_owner/$contents"
+chown www-data:www-data "$contentsdir" -R
+
+echo "call fetch_$rnd.cgi from GitHub"

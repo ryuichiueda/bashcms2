@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+echo 'Content-type: text/html'
+echo
+
+cd @@@
+git pull
