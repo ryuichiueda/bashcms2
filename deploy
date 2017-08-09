@@ -1,10 +1,5 @@
 #!/bin/bash -eux
-
-contents="bashcms2_contents"
-contents_owner="ryuichiueda"
-wwwdir="/var/www"
-contentsdir="$wwwdir/$contents"
-appdir="$wwwdir/bashcms2"
+source "$(dirname $0)/bin/conf"
 
 [ "$USER" = "root" ] # USER MUST BE ROOT
 
@@ -14,7 +9,6 @@ chown www-data:www-data "$appdir" -R
 
 ### EDIT FETCH CGI ###
 cd "$appdir"
-sed -i "s;@@@;$contentsdir;" "fetch"
 rnd=$(cat /dev/urandom | tr -cd 0-9a-zA-Z | head -c 32)
 mv "fetch" "fetch_$rnd.cgi"
 

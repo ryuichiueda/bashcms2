@@ -1,7 +1,8 @@
 #!/bin/bash -ex
+source "$(dirname $0)/conf"
 
 echo 'Content-type: text/html'
 echo
 
-cd @@@
+cd "$contentsdir"
 git pull
