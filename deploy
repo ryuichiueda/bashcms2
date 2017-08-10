@@ -3,6 +3,9 @@ source "$(dirname $0)/bin/conf"
 
 [ "$USER" = "root" ] # USER MUST BE ROOT
 
+mkdir -p "$logdir"
+chown www-data:www-data "$logdir"
+
 ### INSTALL THIS SYSTEM ###
 rsync -av --delete "$(dirname $0)/bin/" "$appdir/"
 chown www-data:www-data "$appdir" -R
@@ -10,6 +13,7 @@ chown www-data:www-data "$appdir" -R
 ### EDIT FETCH CGI ###
 cd "$appdir"
 rnd=$(cat /dev/urandom | tr -cd 0-9a-zA-Z | head -c 32)
+[ -e "/home/ueda/rnd" ] && rnd=$(cat /home/ueda/rnd )
 mv "fetch" "fetch_$rnd.cgi"
 
 ### PULL DATA ###
