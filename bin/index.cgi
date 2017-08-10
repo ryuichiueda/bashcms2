@@ -1,7 +1,9 @@
 #!/bin/bash
-dir=$(dirname $0)
+source "$(dirname $0)/conf"
+
+md="$contentsdir/posts/template/main.md"
 
 echo "Content-Type: text/html"
 echo
-sed 's/^/\t/' $dir/pages/top/html        |
-filehame -lDOCUMENT $dir/template.0.html -
+
+pandoc -f markdown_github+yaml_metadata_block "$md"
