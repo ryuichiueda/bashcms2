@@ -6,7 +6,6 @@ exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
 tmp=/tmp/$$
 dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 md="$contentsdir/$dir/main.md"
-attach="/$dir/"
 [ -f "$md" ]
 
 ### MAKE HTML ###
@@ -14,8 +13,7 @@ pandoc -f markdown_github+yaml_metadata_block "$md" > $tmp-doc
 
 ### OUTPUT ###
 sed "/DOCUMENT/r $tmp-doc" "$appdir/files/template.html" 	|
-sed "s;<img src=\";&$attach;"					|
-sed "s;<a href=\";&$attach;"					|
+sed -r "s;<(img src|a href)=\";&/$dir/;"			|
 sed "1iContent-Type: text/html\n"
 
 rm -f $tmp-*
