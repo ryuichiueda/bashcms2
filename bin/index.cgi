@@ -1,6 +1,9 @@
 #!/bin/bash -euxv
 source "$(dirname $0)/conf"
 exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
+set -o pipefail
+
+trap 'rm $tmp-*' EXIT
 
 ### VARIABLES ###
 tmp=/tmp/$$
@@ -17,12 +20,7 @@ title: $(grep '^# ' "$md" | sed 's/^# *//')
 ---
 FIN
 
-### MAKE HTML ###
+### OUTPUT ###
 pandoc --template="$appdir/files/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
-sed -r "/:\/\//!s;<(img src|a href)=\";&/$dir/;"   > $tmp-html 
-
-### OUTPUT ###
-sed "1iContent-Type: text/html\n" $tmp-html
-
-rm -f $tmp-*
+sed -r "/:\/\//!s;<(img src|a href)=\";&/$dir/;"

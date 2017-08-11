@@ -6,23 +6,21 @@ exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
 tmp=/tmp/$$
 dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 md="$contentsdir/$dir/main.md"
-dd="$datadir/$dir/"
 [ -f "$md" ]
-created_time=$(date -f - < "$datadir/$dir/created_time") 
-modified_time=$(date -f - < "$datadir/$dir/modified_time") 
 
-### MAKE HTML ###
-pandoc -f markdown_github+yaml_metadata_block "$md" > $tmp-doc
-
-cat << FIN | tee /tmp/aho > $tmp-sed
-1iContent-Type: text/html\n
-s;CREATED_TIME;$created_time;
-s;MODIFIED_TIME;$modified_time;
+### MAKE MATADATA ###
+cat << FIN > $tmp-meta.yaml
+---
+created_time: $(date -f - < $datadir/$dir/created_time)
+modified_time: $(date -f - < $datadir/$dir/modified_time)
+title: $(grep '^# ' "$md" | sed 's/^# *//')
+---
 FIN
 
 ### OUTPUT ###
-sed "/DOCUMENT/r $tmp-doc" "$appdir/files/template.html" 	|
-sed -r "/:\/\//!s;<(img src|a href)=\";&/$dir/;"		|
-sed -rf $tmp-sed
+pandoc --template="$appdir/files/template.html"	\
+    -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
+sed -r "/:\/\//!s;<(img src|a href)=\";&/$dir/;"                   |
+cat #sed "1iContent-Type: text/html\n"
 
 rm -f $tmp-*
