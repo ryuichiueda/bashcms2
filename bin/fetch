@@ -8,24 +8,20 @@ echo
 cd "$contentsdir"
 git pull
 
-### CREATE DATADIRS ###
-cd "$contentsdir"
-find posts pages -maxdepth 1 -type d	|
-grep /					|
-xargs -I@ mkdir -p "$datadir/@"
-
 ### TIMESTAMP FILES IF NOT EXIST ###
-cd "$datadir"
 find posts pages -maxdepth 1 -type d	|
 grep /					|
 while read d ; do
 	[ -f "$contentsdir/$d/main.md" ] || continue
+	mkdir -p "$datadir/$d"
 	touch "$datadir/$d/main.md"
 
+	### ADD CREATE TIME IF NECESARRY ###
 	[ ! -f "$datadir/$d/created_time" ] &&
-	date "+%Y%m%d %H%M%S %N" > "$datadir/$d/created_time"
+	date "+%Y-%m-%d %H:%M:%S" > "$datadir/$d/created_time"
 
+	### CHANGE MODIFIED TIME IF NECESARRY ###
 	! diff "$contentsdir/$d/main.md" "$datadir/$d/main.md"	&&
 	cp "$contentsdir/$d/main.md" "$datadir/$d/main.md"	&&
-	date "+%Y%m%d %H%M%S %N" > "$datadir/$d/modified_time"
+	date "+%Y-%m-%d %H:%M:%S" > "$datadir/$d/modified_time"
 done
