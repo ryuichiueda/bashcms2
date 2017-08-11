@@ -13,8 +13,7 @@ pandoc -f markdown_github+yaml_metadata_block "$md" > $tmp-doc
 
 ### OUTPUT ###
 sed "/DOCUMENT/r $tmp-doc" "$appdir/files/template.html" 	|
-sed -r "s;<(img src|a href)=\";&/$dir/;"			|
+sed -r "/:\/\//!s;<(img src|a href)=\";&/$dir/;"		|
 sed "1iContent-Type: text/html\n"
 
 rm -f $tmp-*
-
