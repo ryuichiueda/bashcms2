@@ -3,7 +3,7 @@ source "$(dirname $0)/conf"
 exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
 set -o pipefail
 
-trap 'rm $tmp-*' EXIT
+trap 'rm -f $tmp-*' EXIT
 
 ### VARIABLES ###
 tmp=/tmp/$$
@@ -13,7 +13,7 @@ md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
 ### MAKE MATADATA ###
-cat << FIN | tee /tmp/aho > $tmp-meta.yaml
+cat << FIN > $tmp-meta.yaml
 ---
 created_time: '$(date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
