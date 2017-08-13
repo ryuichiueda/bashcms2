@@ -62,6 +62,6 @@ while read ymd hms d ; do
 	sed -n -e '1p' -e '$p'                         			|
 	xargs -I@ cat "$datadir/@/link"                 		|
 	awk 'NR<=2{print}END{for(i=NR;i<2;i++){print "LOST TITLE"}}'	|
-#	sed -e '1s/.*/\x27prev:&/' -e '2s/.*/next:&\x27/'		|
+	sed -e '1s/^/prev:/' -e '2s/^/next:/'				|
 	tr '\n' ' '					> "$datadir/$d/nav"
 done
