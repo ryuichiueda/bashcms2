@@ -3,44 +3,21 @@ Content-type: text/html
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>$title$</title>
-  <link rel="stylesheet" href="/view/default.css" />
-  <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>$title$</title>
 </head>
 <body>
-   <header id="page-header">
-     <hgroup>
-       <h1><a href="/">bashcms2ブログ</a></h1>
-       <h2>え？また書くんですか？</h2>
-     </hgroup>
-     <nav><ul>
-       <li><a href="/?page=top">bashcms2とは? </a></li>
-       <li><a href="https://github.com/ryuichiueda/bashcms2">リポジトリ</a></li>
-       <li><a href="https://blog.ueda.tech">作者のブログ</a></li>
-       <li><a href="http://test.usptomo.com">旧バージョン</a></li>
-     </ul></nav>
+    <header>
+        <p>$created_time$</p>
+	<p>views: $views$</p>
+        <p>$nav$</p>
     </header>
-    <article id="article">
-      <header id="article-header">
-      <nav>
-	$nav$<br />$created_time$
-      </nav>
-      </header>
-      <article id="article-body">
-        $body$
-      </article>
-      <footer id="article-footer">
-        <nav>
-	  created: $created_time$&nbsp;(last modified: $modified_time$)<br />keywords: $Keywords$
-        </nav>
-      </footer>
-    </article>
-    <aside id="widgets">
-      <aside>ここにサイト内検索等の機能を入れる</aside>
-      <footer id="page-footer">
+       $body$
+    <footer>
+        <p>created: $created_time$,
+                modified: $modified_time$,
+		keywords: $Keywords$</p>
 	<p>Copyright: $Copyright$</p>
-      </footer>
-    </aside>
+    </footer>
 </body>
 </html>

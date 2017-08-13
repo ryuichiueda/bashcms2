@@ -28,7 +28,7 @@ while read d ; do
 	continue
 done
 
-### MAKE SOME SHORTCUT ###
+### MAKE SOME SNIPS ###
 find posts pages -maxdepth 1 -type d	|
 grep /					|
 while read d ; do
