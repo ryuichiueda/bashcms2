@@ -7,6 +7,7 @@ Content-type: text/html
   <title>$title$</title>
   <link rel="stylesheet" href="/view/default.css" />
   <meta name="viewport" content="width=device-width" />
+  <script src="/view/main.js"></script>
 </head>
 <body>
    <header id="page-header">
@@ -16,6 +17,7 @@ Content-type: text/html
      </hgroup>
      <nav><ul>
        <li><a href="/?page=top">bashcms2とは? </a></li>
+       <li><a href="/?post">作業日誌（ブログ）</a></li>
        <li><a href="https://github.com/ryuichiueda/bashcms2">リポジトリ</a></li>
        <li><a href="https://blog.ueda.tech">作者のブログ</a></li>
        <li><a href="http://test.usptomo.com">旧バージョン</a></li>
@@ -37,7 +39,7 @@ Content-type: text/html
       </footer>
     </article>
     <aside id="widgets">
-      <aside>ここにサイト内検索等の機能を入れる</aside>
+      <aside id="last-articles"></aside>
       <footer id="page-footer">
 	<p>Copyright: $Copyright$</p>
       </footer>
