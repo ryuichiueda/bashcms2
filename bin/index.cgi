@@ -9,6 +9,7 @@ trap 'rm -f $tmp-*' EXIT
 tmp=/tmp/$$
 dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 [ -z "$dir" ] && dir="pages/top"
+[ "$dir" = "post" ] && dir="$(tail -n 1 "$datadir/post_list" | cut -d' ' -f 3)"
 md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
