@@ -65,3 +65,20 @@ while read ymd hms d ; do
 	sed -e '1s/^/prev:/' -e '2s/^/next:/'				|
 	tr '\n' ' '					> "$datadir/$d/nav"
 done
+
+### MAKE KEYWORD LIST ###
+cd "$datadir"
+find posts pages -type f         |
+grep 'main.md$'                  |
+xargs grep -m 1 '^Keywords:'	 |
+sed 's;/main.md:Keywords:; ;'    |
+sed 's/ *, */,/g'		 |
+sed 's/  */ /g'			 |
+nkf -w16B0                       |
+xxd -plain                       |
+tr -d '\n'                       |
+sed 's/..../\&#x&;/g'            |
+sed 's/\&#x000a;/\n/g'           |
+sed -e 's/\&#x0020;/ /' -e 's/\&#x002c;/,/g'  |
+awk '{print $1,"," $2 ","}'	> "$datadir/keywords_list"   
+
