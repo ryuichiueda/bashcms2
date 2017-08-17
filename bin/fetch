@@ -45,16 +45,27 @@ while read d ; do
 	touch "$datadir/$d/nav"
 done
 
+### MAKE POST/PAGE LIST ###
+tmp=/tmp/$$
+
 # LIST POSTS DATA
 cd "$datadir"
-find posts -type f				|
-grep created_time				|
-xargs grep -H .					|
-sed 's;/created_time:; ;'			|
-awk '$1!="posts/template"{print $2,$3,$1}'	|
-sort -k1,2				> "$datadir/post_list"
+find posts pages -type f     |
+grep -v '/template/'         |
+grep created_time	     |
+xargs grep -H .		     |
+sed 's;/created_time:; ;'    |
+awk '{print $2,$3,$1}'       |
+sort -k1,2		     |
+tee $tmp-list                |
+awk '$3~/^posts/'            > $tmp-post_list
+mv $tmp-post_list "$datadir/post_list"
 
-# MAKE PREV/NEXT NAVIGATION LINK 
+# LIST PAGES DATA
+awk '$3~/^pages/' $tmp-list  > $tmp-page_list
+mv $tmp-page_list "$datadir/page_list"
+
+### MAKE PREV/NEXT NAVIGATION LINK ###
 cat "$datadir/post_list"     	|
 while read ymd hms d ; do
 	grep -C1 "$d$" "$datadir/post_list"     			|
@@ -68,17 +79,13 @@ done
 
 ### MAKE KEYWORD LIST ###
 cd "$datadir"
-find posts pages -type f         |
-grep 'main.md$'                  |
-xargs grep -m 1 '^Keywords:'	 |
-sed 's;/main.md:Keywords:; ;'    |
-sed 's/ *, */,/g'		 |
-sed 's/  */ /g'			 |
-nkf -w16B0                       |
-xxd -plain                       |
-tr -d '\n'                       |
-sed 's/..../\&#x&;/g'            |
-sed 's/\&#x000a;/\n/g'           |
-sed -e 's/\&#x0020;/ /' -e 's/\&#x002c;/,/g'  |
-awk '{print $1,"," $2 ","}'	> "$datadir/keywords_list"   
+cat $tmp-list                    |
+sort -k1,2			 |
+awk '{print $3 "/main.md"}'             |
+xargs grep -H -m 1 '^Keywords:'         |
+sed 's;/main.md:Keywords:; ;'           |
+sed 's/ *, */,/g'		 	|
+sed 's/  */ /g'			 	|
+awk '{gsub(/^/,",",$2);print}'		|
+sed 's/$/,/'                            > "$datadir/keyword_list"   
 
