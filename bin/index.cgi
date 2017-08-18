@@ -13,7 +13,8 @@ md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
 ### MAKE MATADATA ###
-echo -n 1 >> "$datadir/$dir/views" # increment the counter
+counter="$datadir/counters/$(tr '/' '_' <<< $dir)" 
+echo -n 1 >> "$counter" # increment the counter  
 
 cat << FIN > $tmp-meta.yaml
 ---
@@ -21,7 +22,7 @@ created_time: '$(date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
 title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
-views: '$(ls -l "$datadir/$dir/views" | cut -d' ' -f 5)'
+views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 ---
 FIN
 
