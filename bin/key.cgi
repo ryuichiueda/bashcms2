@@ -10,4 +10,4 @@ awk '{print $1}'                |
 xargs -I@ cat "$datadir/@/link" |
 sed 's/^/* /'                   |
 sed "1i# Keyword: $word"        |
-pandoc --template="$appdir/view/template.html"
+pandoc --template="$viewdir/template.html"

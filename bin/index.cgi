@@ -28,6 +28,6 @@ views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 FIN
 
 ### OUTPUT ###
-pandoc --template="$appdir/view/template.html"	\
+pandoc --template="$viewdir/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
 sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"
