@@ -10,4 +10,4 @@ head -n "$num"				|
 awk '{print $3}'                        |
 xargs -I@ cat "$datadir/@/link_date"    |
 sed 's;$;<br />;'			|
-sed '1iContent-Type: text/html\n\n<h1>Recent posts</h1>'
+sed '1iContent-Type: text/html\n\n<h1>Recent Posts</h1>'

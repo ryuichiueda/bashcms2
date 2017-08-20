@@ -8,7 +8,6 @@ num=$(tr -dc '0-9' <<< ${QUERY_STRING})
 ls -lU "$datadir/counters"  |
 tail -n +2                  | 
 awk '{print $5,$NF}'        |
-awk 'NF>=2'                 |
 sed 's;_;/;'                |
 sort -s -k1,1nr             |
 head -n "$num"              |
