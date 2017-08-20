@@ -17,17 +17,19 @@ md="$contentsdir/$dir/main.md"
 counter="$datadir/counters/$(tr '/' '_' <<< $dir)"
 echo -n 1 >> "$counter" # increment the counter
 
-cat << FIN > $tmp-meta.yaml
+cat << FIN | tee /tmp/hogehoge > $tmp-meta.yaml
 ---
 created_time: '$(date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
 title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
+$(cat "$contentsdir/menu.yaml" )
 ---
 FIN
 
 ### OUTPUT ###
 pandoc --template="$viewdir/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
-sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"
+sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"             |
+sed 's;href="<a href="\(.*\)" class="uri">.*</a>";href="\1";'
