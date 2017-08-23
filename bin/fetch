@@ -6,7 +6,9 @@ echo 'Content-type: text/html'
 echo
 
 cd "$contentsdir"
-git pull
+git pull                        |
+grep -oE '(posts|pages)/[^/]+'  |
+sort -u                         > $tmp-git-change
 
 ### TIMESTAMP FILES IF NOT EXIST ###
 find posts pages -maxdepth 1 -type d	|
