@@ -33,7 +33,7 @@ padding:3px 20px; margin:15px 0px; background-color:#EEE; }
 #article-footer { width:100%; color:white; background-color:#555; margin:10px 0px; }
 #article-footer a { color:white; }
 
-#widgets { width:320px; margin:20px; padding-left:20px; float:right; }
+#widgets { width:320px; margin:20px; float:right; }
 #widgets h1{ font-weight:normal; width:100%; font-size:100%;
     padding:0px 20px; background-color:#555; color:white; }
 #widgets h2{ font-weight:normal; width:100%; font-size:80%;
