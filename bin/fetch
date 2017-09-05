@@ -48,6 +48,9 @@ done
 
 ### MAKE POST/PAGE LIST ###
 
+# SAVE OLD LIST FOR CREATING NAVIGATION LINKS
+cp "$datadir/post_list" $tmp-old-post-list
+
 # LIST POSTS DATA
 cd "$datadir"
 find posts pages -type f     |
@@ -65,9 +68,15 @@ mv $tmp-post_list "$datadir/post_list"
 awk '$3~/^pages/' $tmp-list  > $tmp-page_list
 mv $tmp-page_list "$datadir/page_list"
 
-### MAKE PREV/NEXT NAVIGATION LINK ###
-cat "$datadir/post_list"     	|
+### MAKE PREV/NEXT NAVIGATION LINKS ###
+sort -m $tmp-old-post-list "$datadir/post_list"	|
+uniq > $tmp-new-old-list
+
+cat $tmp-git-change                             |
+xargs -I@ -n 1 grep -C1 "@$" $tmp-new-old-list	|
+sort -u                                         |
 while read ymd hms d ; do
+	[ -f "$contentsdir/$d/main.md" ] || continue
 	grep -C1 "$d$" "$datadir/post_list"     			|
 	awk '{print $3}'                        			|
 	sed -n -e '1p' -e '$p'                         			|
