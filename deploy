@@ -22,5 +22,6 @@ rm -rf "${contentsdir:?}"
 cd "$wwwdir"
 git clone "https://github.com/$contents_owner/$contents"
 chown www-data:www-data "$contentsdir" -R
+#chown www-data:www-data "$contentsdir/.git" -R
 
 echo "call fetch_$rnd.cgi from GitHub"
