@@ -6,3 +6,7 @@ body {
 #article-info p{font-size:80%}
 #widgets h1{font-size:160%}
 #widgets a{font-size:80%}
+
+.fb_iframe_widget > span {
+	  vertical-align: baseline !important;
+}
