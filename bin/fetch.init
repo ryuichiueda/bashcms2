@@ -8,33 +8,29 @@ echo
 cd "$contentsdir"
 git pull
 
-### TIMESTAMP FILES IF NOT EXIST ###
-find posts pages -maxdepth 1 -type d	|
-grep /					|
+### CREATE TIMESTAMP FILES IF NOT EXIST ###
+find posts pages -maxdepth 1 -type d    |
+grep /                                  |
 while read d ; do
-	[ -f "$contentsdir/$d/main.md" ] || continue
-	mkdir -p "$datadir/$d"
-	touch "$datadir/$d/main.md"
-
-	### ADD CREATE TIME IF NECESARRY ###
-	[ ! -f "$datadir/$d/created_time" ] &&
-	date "+%Y-%m-%d %H:%M:%S" > "$datadir/$d/created_time"
-
-	### CHANGE MODIFIED TIME IF NECESARRY ###
-	! diff "$contentsdir/$d/main.md" "$datadir/$d/main.md" 	&&
-	cp "$contentsdir/$d/main.md" "$datadir/$d/main.md"	&&
-	date "+%Y-%m-%d %H:%M:%S" > "$datadir/$d/modified_time"
-
-	continue
+    [ -f "$contentsdir/$d/main.md" ] &&
+    mkdir -p "$datadir/$d"           &&
+    ### ADD TIME FILES ###
+    git log -p "$contentsdir/$d/main.md" |
+    grep '^Date:'                        |
+    awk '{print $2,$3,$4,$5,$6}'         |
+    date -f - "+%Y-%m-%d %H:%M:%S"       |
+    awk -v cf="$datadir/$d/created_time" \
+        -v mf="$datadir/$d/modified_time" \
+        'NR==1{print > mf}END{print > cf}'
 done
 
 ### DELETE DELETED ARTICLES ###
 cd "$datadir"
-find posts pages -maxdepth 1 -type d	|
-grep /					|
+find posts pages -maxdepth 1 -type d    |
+grep /                                  |
 while read d ; do
-	[ -f "$contentsdir/$d/main.md" ] && continue
-	rm -Rf "./$d"
+    [ -f "$contentsdir/$d/main.md" ] && continue
+    rm -Rf "./$d"
 done
 
 ### MAKE SOME SNIPS ###
@@ -56,7 +52,6 @@ while read d ; do
 
 	touch "$datadir/$d/nav"
 done
-
 
 ### MAKE POST/PAGE LIST ###
 tmp=/tmp/$$
@@ -91,7 +86,7 @@ while read ymd hms d ; do
 done
 
 ### MAKE KEYWORD LIST ###
-cd "$datadir"
+cd "$contentsdir"
 cat $tmp-list                    |
 awk '{print $3 "/main.md"}'      |
 xargs grep -H -m 1 '^Keywords:'  |
@@ -103,7 +98,7 @@ sed 's/$/,/'                     > $tmp-keyword_list
 mv $tmp-keyword_list "$datadir/keyword_list"   
 
 ### MAKE SEARCH FILE ###
-cd "$datadir"
+cd "$contentsdir"
 cat $tmp-list                    |
 awk '{print $3 "/main.md"}'      |
 xargs grep -H ^			 |
@@ -112,3 +107,5 @@ awk 'a!=$1{c=0;a=$1}c>=2{print}$2~/^---$/{c++}' |
 awk '$2~/^\*$|^#*$/{$2=""}{print}'		|
 awk 'NF>1'			> $tmp-all
 mv $tmp-all "$datadir/all_markdown"
+
+rm -f $tmp-*
