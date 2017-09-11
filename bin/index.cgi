@@ -24,7 +24,7 @@ modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
 title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
-$(cat "$contentsdir/menu.yaml" )
+$(cat "$contentsdir/config.yaml" )
 ---
 FIN
 
