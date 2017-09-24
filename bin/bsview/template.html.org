@@ -9,7 +9,7 @@ Content-type: text/html
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>$title$ | $sitetitle$</title>
+    <title>$title$</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -17,28 +17,14 @@ Content-type: text/html
     <!-- Font Awesome CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <!-- highlight.js -->
-    <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-
     <!-- Custom styles for this template -->
     <link href="/bsview/jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
-    $if(facebook)$
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    $endif$
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="$protocol$//$host$">$sitetitle$</a>
+      <a class="navbar-brand" href="#">bashcms2ブログ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -71,8 +57,8 @@ Content-type: text/html
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-	<h1>$sitetitle$</h1>
-	<p>$sitesubtitle$</p>
+	<h1>bashcms2ブログ</h1>
+	<p>Bootstrap便利ですね。</p>
       </div>
     </div>
 
@@ -90,17 +76,8 @@ Content-type: text/html
 	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	  $endif$
 	  $if(line)$
-	  <div class="line-it-button" data-lang="ja" data-type="like" data-url="$protocol$//$host$$page$" data-share="true" style="display: none;"></div>
-	  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-	  $endif$
-
-	  $if(facebook)$
-	  <div class="fb-like" data-href="$protocol$//$host$$page$" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-	  $endif$
-
-	  $if(pocket)$
-	  <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
-	  <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+	  <div class="line-it-button" data-lang="ja" data-type="like" data-url="$protocol$$host$$page$" data-share="true" style="display: none;"></div>
+	   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 	  $endif$
 	  $body$
           <div class="card" id="article-info">
@@ -114,12 +91,6 @@ Content-type: text/html
           </div>
         </div>
 	<div class="col-md-4" id="widgets">
-	  $if(sociallinks)$
-	  <h1>Social Links</h1>
-	  $endif$
-          $for(sociallinks)$
-	  <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
-	  $endfor$
           <aside id="last-articles"></aside>
           <br />
           <aside id="rank-articles"></aside>
@@ -137,8 +108,6 @@ Content-type: text/html
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

@@ -9,7 +9,8 @@ trap 'rm -f $tmp-*' EXIT
 tmp=/tmp/$$
 dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 [ -z "$dir" ] && dir="pages/top"
-[ "$dir" = "post" ] && dir="$(tail -n 1 "$datadir/post_list" | cut -d' ' -f 3)"
+# REDIRECT IF "POST"
+[ "$dir" = "post" ] && echo -e Location: "$(cat $datadir/last_post)\n" && exit 0
 md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
@@ -25,6 +26,7 @@ title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 $(cat "$contentsdir/config.yaml" )
+page: $(sed -e 's;^;/?;' -e 's;s/;=;' <<< $dir)
 ---
 FIN
 
@@ -32,4 +34,4 @@ FIN
 pandoc --template="$viewdir/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
 sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"             |
-sed 's;href="<a href="\(.*\)" class="uri">.*</a>";href="\1";'
+sed -r 's;href="<a href="([^"]*)"[^>]*>.*</a>";href="\1";'
