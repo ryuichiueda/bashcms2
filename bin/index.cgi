@@ -34,4 +34,5 @@ FIN
 pandoc --template="$viewdir/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
 sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"             |
-sed -r 's;href="<a href="([^"]*)"[^>]*>.*</a>";href="\1";'
+sed -r 's;href="<a href="([^"]*)"[^>]*>.*</a>";href="\1";'         |
+sed "s;/$dir/#;#;g"
