@@ -30,4 +30,5 @@ FIN
 ### OUTPUT ###
 pandoc --template="$appdir/view/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
-sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"
+sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"             |
+sed "s;/$dir/#;#;g"
