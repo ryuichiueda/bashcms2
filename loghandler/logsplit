@@ -1,0 +1,30 @@
+#!/bin/bash -e
+set -o pipefail
+dir=$(dirname $0)
+work=/home/ueda/work
+mkdir -p $work
+
+### 下準備 ###
+tr -dc '[:print:]\n'                        |
+#\を%エンコーディング
+sed 's;\\\\;%5C;g'                          |
+#エスケープされたダブルクォートを%エンコーディング
+sed 's;\\";%22;g'                           |
+#空のデータを埋める
+sed 's/""/" "/g'                            |
+#一気に正規化。区切り文字を"に
+sed -r 's;^(.+) (.+) (.+) \[(.+)\] "(.+)" (.+) (.+) "(.+)" "(.+)"$;\1"[\4]"\5"\6"\7"\8"\9;' |
+#頭にIDをつける
+awk '{print sprintf("%09d",NR) "\"" $0}'    |
+#アンダーバーと空白のエスケープ処理
+sed 's/_/\\_/g'                             |
+sed 's/ /_/g'                               |
+### データを切り分ける ###
+awk -v "d=$work" -F\" '
+    $7!="-"{print $1,$7 > d"/referer"}
+    {print $1,$2 > d"/ip";     print $1,$4 > d"/request";
+     print $1,$5 > d"/status"; print $1,$8 > d"/agent";
+     print $1,$3}'              |
+tr '_' ' '                      |
+$dir/time_normalize             |
+awk '{print $3,$1,$2}'          > $work/time
