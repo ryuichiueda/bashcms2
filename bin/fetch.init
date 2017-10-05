@@ -22,6 +22,9 @@ while read d ; do
     awk -v cf="$datadir/$d/created_time" \
         -v mf="$datadir/$d/modified_time" \
         'NR==1{print > mf}END{print > cf}'
+
+    [ -f "$contentsdir/$d/created_time" ] &&
+    cp "$contentsdir/$d/created_time" "$datadir/$d/"
 done
 
 ### DELETE DELETED ARTICLES ###
