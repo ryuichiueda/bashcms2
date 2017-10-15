@@ -56,7 +56,6 @@ tmp=/tmp/$$
 # LIST POSTS DATA
 cd "$datadir"
 find posts pages -type f     |
-grep -v '/template/'         |
 grep created_time            |
 xargs grep -H .              |
 sed 's;/created_time:; ;'    |
