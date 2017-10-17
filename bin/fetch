@@ -10,8 +10,8 @@ cd "$contentsdir"
 git pull
 
 git diff --name-status HEAD^ HEAD        |
-grep -E '(posts|pages)/[^/]+/main\.md$'  |
-sed 's;/main\.md$;;'                     |
+grep -E '(posts|pages)/[^/]+/[^/]+$'     |
+sed -r 's;/[^/]+$;;'                     |
 awk '{print $2}'                         |
 sort -u                                  > $tmp-git-change
 
@@ -48,6 +48,7 @@ done
 ### MAKE POST/PAGE LIST ###
 
 # SAVE OLD LIST FOR CREATING NAVIGATION LINKS
+touch "$datadir/post_list"
 cp "$datadir/post_list" $tmp-old-post-list
 
 # LIST POSTS DATA
