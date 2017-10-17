@@ -1,10 +1,9 @@
 * { margin:0; padding:0; }
 body { max-width:1000px; }
-article, nav, header, footer, aside { display:block; float:left; }
+article, nav, header, footer, aside, li { display:block; float:left; }
 footer { width:100%; clear:both; font-size:70%; }
 ul { margin-left:30px; }
 a { color:red; text-decoration:none;}
-nav li { display:block; float:left; }
 
 #page-header { text-align:center; width:100%; padding:20px 0px; }
 #page-header a { color:black; }
