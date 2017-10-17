@@ -10,10 +10,10 @@ cd "$contentsdir"
 git pull
 
 git diff --name-status HEAD^ HEAD        |
-grep -E '(posts|pages)/[^/]+/[^/]+$'     |
-sed -r 's;/[^/]+$;;'                     |
-awk '{print $2}'                         |
+grep -Eo '(posts|pages)/[^/]+'           |
 sort -u                                  > $tmp-git-change
+
+cat $tmp-git-change > /tmp/diff
 
 ### CREATE TIMESTAMP FILES IF NOT EXIST ###
 cat $tmp-git-change |
