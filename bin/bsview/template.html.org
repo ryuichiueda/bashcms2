@@ -3,28 +3,18 @@ Content-type: text/html
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39565206-5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)};
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-39565206-5');
-    </script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <meta property="og:url"           content="$protocol$//$host$/?$page$" />
+    <meta property="og:url"           content="$protocol$://$host$/?$page$" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="$title$ | $sitetitle$" />
+    <meta property="og:title"         content="$title$" />
 
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>$title$ | $sitetitle$</title>
+    <title>$title$</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -38,8 +28,6 @@ Content-type: text/html
 
     <!-- Custom styles for this template -->
     <link href="/bsview/jumbotron.css" rel="stylesheet">
-
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 
   <body>
@@ -53,7 +41,7 @@ Content-type: text/html
   }(document, 'script', 'facebook-jssdk'));</script>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="/">R.Ueda blog</a>
+      <a class="navbar-brand" href="/">上田ブログ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -86,27 +74,8 @@ Content-type: text/html
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h1>$sitetitle$</h1>
-            <p>$subtitle$</p>
-            $if(headline)$
-            <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ </p>
-            $endif$
-          </div>
-          <div class="col-md-4">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout-key="-go-p+33-1k-4o"
-                 data-ad-client="ca-pub-7242808947152948"
-                 data-ad-slot="2637185830"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
+	<h1>上田ブログ（新）</h1>
+	<p>もう少しでこっちがメインに</p>
       </div>
     </div>
 
@@ -115,6 +84,18 @@ Content-type: text/html
       <!--3個col-md-4というclassの要素がある部分を書き換え-->
       <div class="row">
         <div class="col-md-8" id="article-body">
+          <!-- google ad -->
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-format="fluid"
+               data-ad-layout-key="-go-p+33-1k-4o"
+               data-ad-client="ca-pub-7242808947152948"
+               data-ad-slot="2637185830"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+          <!-- google ad -->
 
 	    $if(twitter)$
 	    <a href="https://twitter.com/share" class="twitter-share-button" data-via="$twitter.account$">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>&nbsp;
@@ -125,11 +106,11 @@ Content-type: text/html
 	    $endif$
 
 	    $if(facebook)$
-	    <div class="fb-like" data-href="$protocol$//$host$/?$page$" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>&nbsp;
+	    <div class="fb-like" data-href="$protocol$://$host$/?$page$" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>&nbsp;
 	    $endif$
 
 	    $if(line)$
-	    <div class="line-it-button" data-lang="ja" data-type="share-a" data-url="$protocol$//$host$/?$page$" style="display: none;"></div>
+	    <div class="line-it-button" data-lang="ja" data-type="share-a" data-url="$protocol$://$host$/?$page$" style="display: none;"></div>
 	    <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>&nbsp;
 	    $endif$
 
@@ -139,7 +120,6 @@ Content-type: text/html
 	    $endif$
 	  $body$
 
-          <br />
           <!-- google ad -->
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <ins class="adsbygoogle"
@@ -153,7 +133,6 @@ Content-type: text/html
           </script>
           <!-- google ad -->
 
-          <br />
           <div class="card" id="article-info">
             <h4 class="card-header">Article Info</h4>
             <p style="padding:5px">created: $created_time$<br />
@@ -165,6 +144,9 @@ Content-type: text/html
           </div>
         </div>
 	<div class="col-md-4" id="widgets">
+	  $if(sociallinks)$
+	  <h1>Social Links</h1>
+	  $endif$
           $for(sociallinks)$
 	  <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
 	  $endfor$
@@ -177,7 +159,7 @@ Content-type: text/html
       <hr>
 
       <footer>
-        <p>$Copyright$</p>
+        <p>&copy; $Copyright$</p>
       </footer>
     </div> <!-- /container -->
 
