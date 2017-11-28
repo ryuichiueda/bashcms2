@@ -7,11 +7,18 @@ echo 'Content-type: text/html'
 echo
 
 cd "$contentsdir"
+git fetch origin master
+git diff --name-status HEAD origin/master  |
+grep -Eo '(posts|pages)/[^/]+'             |
+sort -u                                    > $tmp-git-change
+
 git pull
 
-git diff --name-status HEAD^ HEAD        |
-grep -Eo '(posts|pages)/[^/]+'           |
-sort -u                                  > $tmp-git-change
+[ -f "$datadir/INIT" ] &&
+find posts pages -type d       |
+grep -Eo '(posts|pages)/[^/]+' > $tmp-git-change
+
+rm -f "$datadir/INIT"
 
 ### CREATE TIMESTAMP FILES IF NOT EXIST ###
 cat $tmp-git-change |
