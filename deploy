@@ -28,6 +28,3 @@ echo "call fetch_$rnd.cgi from GitHub"
 ### RESTORE DATADIR ###
 rm -rf "$datadir/posts"
 rm -rf "$datadir/pages"
-sudo -u www-data "$appdir/fetch.init"
-
-rm -f "$appdir/fetch.init"
