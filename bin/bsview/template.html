@@ -7,6 +7,15 @@ Content-type: text/html
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    $if(facebook)$
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="$facebook.image$" />
+    $endif$
+
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>$title$ | $sitetitle$</title>
