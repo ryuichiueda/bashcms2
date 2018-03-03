@@ -9,11 +9,11 @@ Content-type: text/html
     <meta name="author" content="">
 
     $if(facebook)$
-    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:url"           content="$protocol$//$host$" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Your Website Title" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="$facebook.image$" />
+    <meta property="og:title"         content="$title$ | $sitetitle$" />
+    <meta property="og:description"   content="$facebook.description$" />
+    <meta property="og:image"         content="$protocol$//$host$$facebook.image$" />
     $endif$
 
     <link rel="icon" href="../../../../favicon.ico">
