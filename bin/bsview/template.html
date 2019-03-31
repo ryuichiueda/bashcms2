@@ -165,14 +165,15 @@ Content-type: text/html
         </div>
 	<div class="col-md-4" id="widgets">
           <aside>
+            <h1>Who???</h1>
             <script src="https://apis.google.com/js/platform.js"></script>
             <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
-            <br />
             <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
+            <br />
+            $for(sociallinks)$
+	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
+	    $endfor$
           </aside>
-          $for(sociallinks)$
-	  <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
-	  $endfor$
           <aside id="last-articles"></aside>
           <br />
           <aside id="rank-articles"></aside>
