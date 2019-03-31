@@ -153,17 +153,15 @@ Content-type: text/html
           <!-- google ad -->
 
           <br />
-          <div class="card" id="article-info">
-            <h4 class="card-header">Article Info</h4>
+        </div>
+	<div class="col-md-4" id="widgets">
+            <h1>記事の情報</h1>
             <p style="padding:5px">created: $created_time$<br />
               modified: $modified_time$<br />
               views: $views$<br />
               keywords: <span id="keywords">$Keywords$</span></br>
               $nav$
             </p>
-          </div>
-        </div>
-	<div class="col-md-4" id="widgets">
           <aside>
             <h1>Who???</h1>
             <script src="https://apis.google.com/js/platform.js"></script>
@@ -174,6 +172,7 @@ Content-type: text/html
 	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
 	    $endfor$
           </aside>
+          <br />
           <aside id="last-articles"></aside>
           <br />
           <aside id="rank-articles"></aside>

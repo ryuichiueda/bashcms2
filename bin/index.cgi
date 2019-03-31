@@ -20,8 +20,8 @@ echo -n 1 >> "$counter" # increment the counter
 
 cat << FIN | tee /tmp/hogehoge > $tmp-meta.yaml
 ---
-created_time: '$(date -f - < "$datadir/$dir/created_time")'
-modified_time: '$(date -f - < "$datadir/$dir/modified_time")'
+created_time: '$(LANG=C date -f - < "$datadir/$dir/created_time")'
+modified_time: '$(LANG=C date -f - < "$datadir/$dir/modified_time")'
 title: '$(cat "$datadir/$dir/title")'
 nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
