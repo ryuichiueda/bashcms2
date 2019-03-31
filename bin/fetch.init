@@ -1,6 +1,6 @@
 #!/bin/bash -euvx
 source "$(dirname $0)/conf"
-exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
+#exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
 
 echo 'Content-type: text/html'
 echo
@@ -24,7 +24,7 @@ while read d ; do
         'NR==1{print > mf}END{print > cf}'
 
     [ -f "$contentsdir/$d/created_time" ] &&
-    cp "$contentsdir/$d/created_time" "$datadir/$d/"
+    cp "$contentsdir/$d/created_time" "$datadir/$d/" || true
 done
 
 ### DELETE DELETED ARTICLES ###
@@ -62,7 +62,6 @@ tmp=/tmp/$$
 # LIST POSTS DATA
 cd "$datadir"
 find posts pages -type f     |
-grep -v '/template/'         |
 grep created_time	     |
 xargs grep -H .		     |
 sed 's;/created_time:; ;'    |
@@ -110,5 +109,13 @@ awk 'a!=$1{c=0;a=$1}c>=2{print}$2~/^---$/{c++}' |
 awk '$2~/^\*$|^#*$/{$2=""}{print}'		|
 awk 'NF>1'			> $tmp-all
 mv $tmp-all "$datadir/all_markdown"
+
+### MAKE LATEST POST ###
+page=$( tail -n 1 "$datadir/post_list" | cut -d' ' -f 3 | sed 's;s/;=;')
+proto=$(awk '$1=="protocol:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+host=$(awk '$1=="host:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+
+echo $proto"//"$host"/?"$page > "$datadir/last_post"
+
 
 rm -f $tmp-*

@@ -10,9 +10,7 @@ cd "$contentsdir"
 git pull
 
 git diff --name-status HEAD^ HEAD        |
-grep -E '(posts|pages)/[^/]+/main\.md$'  |
-sed 's;/main\.md$;;'                     |
-awk '{print $2}'                         |
+grep -Eo '(posts|pages)/[^/]+'           |
 sort -u                                  > $tmp-git-change
 
 ### CREATE TIMESTAMP FILES IF NOT EXIST ###
@@ -32,7 +30,8 @@ while read d ; do
         'NR==1{print > mf}END{print > cf}'
 
     [ -f "$contentsdir/$d/created_time" ] &&
-    cp "$contentsdir/$d/created_time" "$datadir/$d/"
+    cp "$contentsdir/$d/created_time" "$datadir/$d/" ||
+    true
 
     ### MAKE SOME SNIPS ###
     grep -m 1 '^# ' "$contentsdir/$d/main.md"		|
@@ -56,7 +55,6 @@ cp "$datadir/post_list" $tmp-old-post-list
 # LIST POSTS DATA
 cd "$datadir"
 find posts pages -type f     |
-grep -v '/template/'         |
 grep created_time	     |
 xargs grep -H .		     |
 sed 's;/created_time:; ;'    |
@@ -110,5 +108,12 @@ awk 'a!=$1{c=0;a=$1}c>=2{print}$2~/^---$/{c++}' |
 awk '$2~/^\*$|^#*$/{$2=""}{print}'		|
 awk 'NF>1'			> $tmp-all
 mv $tmp-all "$datadir/all_markdown"
+
+### MAKE LATEST POST ###
+page=$( tail -n 1 "$datadir/post_list" | cut -d' ' -f 3 | sed 's;s/;=;')
+proto=$(awk '$1=="protocol:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+host=$(awk '$1=="host:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+
+echo $proto"//"$host"/?"$page > "$datadir/last_post"
 
 rm -f $tmp-*
