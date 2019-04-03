@@ -1,9 +1,9 @@
 #!/bin/bash -euvx
 source "$(dirname $0)/conf"
 exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
+[ -n "${CONTENT_LENGTH}" ] && dd bs=${CONTENT_LENGTH} > /dev/null
 
-echo 'Content-type: text/html'
-echo
+echo -e 'Content-type: text/html\n'
 
 cd "$contentsdir"
 git pull
@@ -13,24 +13,24 @@ find posts pages -maxdepth 1 -type d    |
 grep /                                  |
 while read d ; do
     [ -f "$contentsdir/$d/main.md" ] &&
-    mkdir -p "$datadir/$d"           &&        
+    mkdir -p "$datadir/$d"           &&
     ### ADD TIME FILES ###
     git log -p "$contentsdir/$d/main.md" |
     grep '^Date:'                        |
     awk '{print $2,$3,$4,$5,$6}'         |
     date -f - "+%Y-%m-%d %H:%M:%S"       |
     awk -v cf="$datadir/$d/created_time" \
-	-v mf="$datadir/$d/modified_time" \
-	'NR==1{print > mf}END{print > cf}'
+        -v mf="$datadir/$d/modified_time" \
+        'NR==1{print > mf}END{print > cf}'
 done
 
 ### DELETE DELETED ARTICLES ###
 cd "$datadir"
-find posts pages -maxdepth 1 -type d    |   
-grep /                                  |   
+find posts pages -maxdepth 1 -type d    |
+grep /                                  |
 while read d ; do
-    [ -f "$contentsdir/$d/main.md" ] && continue
-    rm -Rf "./$d"
+        [ -f "$contentsdir/$d/main.md" ] && continue
+        rm -Rf "./$d"
 done
 
 ### MAKE SOME SHORTCUT ###
@@ -72,7 +72,7 @@ mv $tmp-page_list "$datadir/page_list"
 # MAKE PREV/NEXT NAVIGATION LINK
 cat "$datadir/post_list"        |
 while read ymd hms d ; do
-        grep -C1 "$d$" "$datadir/post_list"                             |
+        grep -C1 " $d$" "$datadir/post_list"                            |
         awk '{print $3}'                                                |
         sed -n -e '1p' -e '$p'                                          |
         xargs -I@ cat "$datadir/@/link"                                 |

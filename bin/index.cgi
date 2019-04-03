@@ -13,7 +13,7 @@ dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
 md="$contentsdir/$dir/main.md"
 [ -f "$md" ]
 
-### MAKE MATADATA ###
+### MAKE METADATA ###
 counter="$datadir/counters/$(tr '/' '_' <<< $dir)"
 echo -n 1 >> "$counter" # increment the counter
 
@@ -28,7 +28,7 @@ views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 FIN
 
 ### OUTPUT ###
-pandoc --template="$appdir/view/template.html"	\
+pandoc --template="$viewdir/template.html" \
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
-sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;"             |
+sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;" |
 sed "s;/$dir/#;#;g"
