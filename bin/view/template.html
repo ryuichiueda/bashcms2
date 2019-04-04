@@ -19,14 +19,14 @@ Content-type: text/html
        <li><a href="/?page=top">bashcms2とは? </a></li>
        <li><a href="/?post">作業日誌（ブログ）</a></li>
        <li><a href="https://github.com/ryuichiueda/bashcms2">リポジトリ</a></li>
-       <li><a href="https://blog.ueda.tech">作者のブログ</a></li>
+       <li><a href="https://b.ueda.tech">作者のブログ</a></li>
        <li><a href="http://test.usptomo.com">旧バージョン</a></li>
      </ul></nav>
     </header>
     <article id="article">
       <header id="article-header">
       <nav>
-	$nav$<br />created: $created_time$<br />views: $views$
+    $nav$<br />created $created_time$<br />views: $views$
       </nav>
       </header>
       <article id="article-body">
@@ -34,16 +34,18 @@ Content-type: text/html
       </article>
       <footer id="article-footer">
         <nav>
-          created: $created_time$&nbsp;(last modified: $modified_time$)<br />views:&nbsp;keywords: <span id="keywords">$Keywords$</span>
+      created $created_time$&nbsp;(last modified: $modified_time$)<br />
+      views:&nbsp;keywords: <span id="keywords">$Keywords$</span>
         </nav>
       </footer>
     </article>
     <aside id="widgets">
+      <!-- <aside>ここにサイト内検索等の機能を入れる</aside> -->
       <aside id="full-search"></aside>
       <aside id="last-articles"></aside>
       <aside id="rank-articles"></aside>
       <footer id="page-footer">
-	<p>Copyright: $Copyright$</p>
+        <p>Copyright $Copyright$</p>
       </footer>
     </aside>
 </body>
