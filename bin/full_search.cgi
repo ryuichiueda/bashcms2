@@ -21,5 +21,4 @@ awk '{print $1}'                        |
 uniq                                    |
 head -n 100                             |
 xargs -I@ cat "$datadir/@/link_date"    |
-sed 's;$;<br/>;' 
-
+sed 's;$;<br/>;'

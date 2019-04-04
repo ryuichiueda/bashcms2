@@ -1,0 +1,19 @@
+#!/bin/bash
+url='https:////bashcms2.ueda.tech/full_search.cgi?word='
+
+search (){
+    curl $url$1 2> /dev/null |
+    grep '<a href'           |
+    wc -l                    |
+    sed 's/^/hits: /' > /dev/tty
+}
+
+for i in {1..10} ; do
+    time -p search $1
+done                               |&
+grep ^real                         |
+awk '{printf $2","}'               |
+sed -e 's/.*/[&]/' -e 's/,]$/]\n/' |
+tee /dev/tty                       |
+sed 's/.*/disp("mean:");mean(&)\ndisp("stddev:");std(&)/'  |
+octave -q
