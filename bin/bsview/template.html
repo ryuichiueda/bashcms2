@@ -1,147 +1,173 @@
 Content-type: text/html
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-
+    <!--<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">-->
+    <!--<meta name="generator" content="Jekyll v3.8.5">-->
     <title>$title$ | $sitetitle$</title>
 
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/jumbotron/">-->
+
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- highlight.js -->
-    <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
 
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
     <!-- Custom styles for this template -->
+    <!-- <link href="jumbotron.css" rel="stylesheet"> -->
     <link href="/bsview/jumbotron.css" rel="stylesheet">
   </head>
-
   <body>
-    $if(facebook)$
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    $endif$
-
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.2"></script>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="$protocol$//$host$">$sitetitle$</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          $for(links)$
-	    $if(links.sublinks)$
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="$links.href$" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$links.text$</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              $for(links.sublinks)$
-              <a class="dropdown-item" href="$links.sublinks.href$">$links.sublinks.text$</a>
-              $endfor$
-            </div>
-	    $else$
-          <li class="nav-item active">
-            <a class="nav-link" href="$links.href$">$links.text$</a>
-          </li>
-	    $endif$
-          $endfor$
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="full-search-box">
-	  <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="fullSearch()">Search</button>
-        </form>
-      </div>
-    </nav>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      $for(links)$
+        $if(links.sublinks)$
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="$links.href$" id="dropdown01"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">$links.text$</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            $for(links.sublinks)$
+            <a class="dropdown-item" href="$links.sublinks.href$">$links.sublinks.text$</a>
+            $endfor$
+        </div>
+        $else$
+      <li class="nav-item active">
+        <a class="nav-link" href="$links.href$">$links.text$</a>
+      </li>
+        $endif$
+      $endfor$
+      <!-- 元からあったメニューもとりあえず残して置きましょう -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="full-search-box">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="fullSearch()">Search</button>
+    </form>
+  </div>
+</nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-	<h1>$sitetitle$</h1>
-	<p>$sitesubtitle$</p>
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>$sitetitle$</h1>
+      <p>$sitesubtitle$</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <!--3個col-md-4というclassの要素がある部分を書き換え-->
+    <div class="row">
+      <div class="col-md-8" id="article-body">
+	$if(hatena)$
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+	$endif$
+
+	$if(twitter)$
+	<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="$twitter$" data-show-count="false">Tweet</a>
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	$endif$
+	$if(line)$
+	<div class="line-it-button" data-lang="ja" data-type="like" data-url="$protocol$//$host$$page$" data-share="true" style="display: none;"></div>
+        <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        $endif$
+	$if(facebook)$
+	<div class="fb-like" data-href="$protocol$//$host$$page$" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        $endif$
+	$if(pocket)$
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+	$endif$
+        $body$
+        <div class="card" id="article-info">
+          <h4 class="card-header">Article Info</h4>
+          <p style="padding:5px">created: $created_time$<br />
+            modified: $modified_time$<br />
+            views: $views$<br />
+            keywords: <span id="keywords">$Keywords$</span></br>
+            $nav$
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4" id="widgets">
+        $if(sociallinks)$
+        <h1>Social Links</h1>
+        $endif$
+        $for(sociallinks)$
+        <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
+        $endfor$
+        <aside id="last-articles"></aside>
+        <br />
+        <aside id="rank-articles"></aside>
       </div>
     </div>
+  
+    <hr>
+  
+    <footer>
+      <p>$Copyright$</p>
+    </footer>
+  </div> <!-- /container -->
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <!--3個col-md-4というclassの要素がある部分を書き換え-->
-      <div class="row">
-        <div class="col-md-8" id="article-body">
-	  $if(hatena)$
-	  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-	  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-	  $endif$
-	  $if(twitter)$
-          <a href="https://twitter.com/share" class="twitter-share-button" data-via="$twitter$">Tweet</a>
-	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	  $endif$
-	  $if(line)$
-	  <div class="line-it-button" data-lang="ja" data-type="like" data-url="$protocol$//$host$$page$" data-share="true" style="display: none;"></div>
-	  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-	  $endif$
+</main>
 
-	  $if(facebook)$
-	  <div class="fb-like" data-href="$protocol$//$host$$page$" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-	  $endif$
-
-	  $if(pocket)$
-	  <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
-	  <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-	  $endif$
-	  $body$
-          <div class="card" id="article-info">
-            <h4 class="card-header">Article Info</h4>
-            <p style="padding:5px">created: $created_time$<br />
-              modified: $modified_time$<br />
-              views: $views$<br />
-              keywords: <span id="keywords">$Keywords$</span></br>
-              $nav$
-            </p>
-          </div>
-        </div>
-	<div class="col-md-4" id="widgets">
-	  $if(sociallinks)$
-	  <h1>Social Links</h1>
-	  $endif$
-          $for(sociallinks)$
-	  <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
-	  $endfor$
-          <aside id="last-articles"></aside>
-          <br />
-          <aside id="rank-articles"></aside>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; $Copyright$</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script src="/bsview/main.js"></script>
-  </body>
+<footer class="container">
+  <p>&copy; Company 2017-2019</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="/bsview/main.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--  <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
+</body>
 </html>

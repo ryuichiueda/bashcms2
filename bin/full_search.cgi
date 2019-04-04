@@ -15,10 +15,10 @@ Content-Type: text/html
 FIN
 
 [ -n "$word" ] &&
-grep " .*$word" "$datadir/all_markdown" |
+tac "$datadir/all_markdown"             |
+grep " .*$word"                         |
 awk '{print $1}'                        |
 uniq                                    |
-tac                                     |
+head -n 100                             |
 xargs -I@ cat "$datadir/@/link_date"    |
-sed 's;$;<br/>;' 
-
+sed 's;$;<br/>;'

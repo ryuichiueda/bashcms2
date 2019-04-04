@@ -8,5 +8,5 @@ body {
 #widgets a{font-size:80%}
 
 .fb_iframe_widget > span {
-  vertical-align: baseline !important;
-}   
+	  vertical-align: baseline !important;
+}
