@@ -7,7 +7,7 @@ trap 'rm -f $tmp-*' EXIT
 
 ### VARIABLES ###
 tmp=/tmp/$$
-dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's;=;s/;')"
+dir="$(tr -dc 'a-zA-Z0-9_=' <<< ${QUERY_STRING} | sed 's/fbclid=.*//' | sed 's;=;s/;')"
 [ -z "$dir" ] && dir="pages/top"
 [ "$dir" = "post" ] && echo -e Location: "$(cat $datadir/last_post)\n" && exit 0
 md="$contentsdir/$dir/main.md"
