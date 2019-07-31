@@ -3,13 +3,16 @@ body {
   padding-top: 3.5rem;
 }
 
-h2 {margin-top:20px}
+h2 {margin-top:40px}
 h2:before {content:"["}
 h2:after {content:"]"}
 
-h3 {padding-top:20px}
+h3 {padding-top:20px;font-size:140%}
 
-#article-info p{font-size:80%}
+p {margin-top:10px;margin-bottom:10px}
+
+#prev-next-nav {font-size:80%}
+#article-info {font-size:80%}
 #widgets h1{font-size:160%}
 #widgets a{font-size:80%}
 

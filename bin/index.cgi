@@ -32,9 +32,10 @@ FIN
 
 ### OUTPUT ###
 pandoc --template="$viewdir/template.html"	\
-    -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"  |
-sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;g"        |
+    -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"   |
+sed -r "/:\/\/|=\"\//!s;<(img src|a href)=\";&/$dir/;g"             |
 sed "s;/$dir/#;#;g"                                                 |
-sed -r 's;href="<a href="([^"]*)"[^>]*>.*</a>";href="\1";'     |
-sed 's/<table/& class="table table-condensed"/'
+sed -r 's;href="<a href="([^"]*)"[^>]*>.*</a>";href="\1";'          |
+sed 's/<table/& class="table table-condensed"/'                     |
+sed -zr 's;(<p id="article-info".*</div>)[\t\n ]+(<h1[^<]+</h1>);\2\n\1;'
 
