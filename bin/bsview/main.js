@@ -2,6 +2,7 @@ window.onload = function () {
     lastArticles(10);
     rankArticles(10);
     linkKeywords();
+    tagcloud();
     //fullSearch("");
 }
 
@@ -60,6 +61,19 @@ function rankArticles(num){
         document.getElementById("rank-articles").innerHTML = httpReq.responseText;
    }
     var url = "/rank_articles.cgi?num=" + num;
+    httpReq.open("GET",url,true);
+    httpReq.send(null);
+}
+
+function tagcloud(){
+    var httpReq = new XMLHttpRequest();
+    httpReq.onreadystatechange = function(){
+        if(httpReq.readyState != 4 || httpReq.status != 200)
+            return;
+
+        document.getElementById("tag-cloud").innerHTML = httpReq.responseText;
+    }
+    var url = "/tagcloud.cgi"
     httpReq.open("GET",url,true);
     httpReq.send(null);
 }
