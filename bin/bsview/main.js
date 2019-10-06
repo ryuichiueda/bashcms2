@@ -1,4 +1,5 @@
 window.onload = function () {
+    tagcloud();
     lastArticles(10); 
     rankArticles(10); 
     linkKeywords();
@@ -78,4 +79,17 @@ function rankArticles(num){
     var url = "/rank_articles.cgi?num=" + num;
     httpReq.open("GET",url,true);   
     httpReq.send(null);             
+}
+
+function tagcloud(){
+    var httpReq = new XMLHttpRequest();
+    httpReq.onreadystatechange = function(){
+        if(httpReq.readyState != 4 || httpReq.status != 200)
+            return;
+
+        document.getElementById("tag-cloud").innerHTML = httpReq.responseText;
+    }
+    var url = "/tagcloud.cgi"
+    httpReq.open("GET",url,true);
+    httpReq.send(null);
 }
