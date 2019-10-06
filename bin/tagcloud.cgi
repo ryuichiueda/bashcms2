@@ -10,4 +10,4 @@ sort                                                                       |
 uniq -c                                                                    |
 sort -k1,1 -r                                                              |
 awk '{print "<a href=\"/key.cgi?key=" $2 "\">" $2  "(" $1 ")</a><br />" }' |
-sed '1iContent-Type: text/html\n\n<h2>Tag Cloud</h2>'
+sed '1iContent-Type: text/html\n\n<h1>Tag Cloud</h1>'

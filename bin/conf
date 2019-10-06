@@ -3,8 +3,7 @@ contents_owner="ryuichiueda"
 wwwdir="/var/www"
 contentsdir="$wwwdir/$contents"
 appdir="$wwwdir/bashcms2"
+viewdir="$appdir/bsview"
 logdir="/var/log/$contents"
 datadir="${contentsdir}_data"
-viewdir="$appdir/view"
-
 export LANG=ja_JP.UTF-8
