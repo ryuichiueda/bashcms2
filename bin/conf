@@ -1,4 +1,4 @@
-contents="eng_contents"
+contents="uedalab_contents"
 contents_owner="ryuichiueda"
 wwwdir="/var/www"
 contentsdir="$wwwdir/$contents"
