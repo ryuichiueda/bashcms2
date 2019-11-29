@@ -22,8 +22,8 @@ cat << FIN | tee /tmp/hogehoge > $tmp-meta.yaml
 ---
 created_time: '$(LANG=C date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(LANG=C date -f - < "$datadir/$dir/modified_time")'
-title: '$(cat "$datadir/$dir/title")'
-nav: '$(cat "$datadir/$dir/nav")'
+title: '$(sed "s/'/''/g" "$datadir/$dir/title")'
+nav: '$(sed "s/'/''/g" "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 $(cat $contentsdir/config.yaml )
 page: '$(sed 's;s/;=;' <<< $dir)'

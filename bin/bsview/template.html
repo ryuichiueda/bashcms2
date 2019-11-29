@@ -43,7 +43,7 @@ Content-type: text/html
   }(document, 'script', 'facebook-jssdk'));</script>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="/">R.Ueda blog</a>
+      <a class="navbar-brand" href="/">Ueda lab.</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -84,18 +84,6 @@ Content-type: text/html
             <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ </p>
             $endif$
           </div>
-          <div class="col-md-4">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout-key="-go-p+33-1k-4o"
-                 data-ad-client="ca-pub-7242808947152948"
-                 data-ad-slot="2637185830"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
         </div>
       </div>
     </div>
@@ -135,30 +123,9 @@ Content-type: text/html
 	  $body$
 
           <br />
-          <!-- google ad -->
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-               style="display:block; text-align:center;"
-               data-ad-layout="in-article"
-               data-ad-format="fluid"
-               data-ad-client="ca-pub-7242808947152948"
-               data-ad-slot="6249127784"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-          <!-- google ad -->
-
-          <br />
 	  <p id="prev-next-nav">$nav$</p>
         </div>
 	<div class="col-md-4" id="widgets">
-          <aside>
-            <h1>Who???</h1>
-            <script src="https://apis.google.com/js/platform.js"></script>
-            <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
-            <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
-            <br />
-          </aside>
           <aside>
             $for(sociallinks)$
 	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
