@@ -3,6 +3,12 @@ body {
   padding-top: 3.5rem;
 }
 
+.jumbotron {
+  background:url(/pages/top/lab_top_s.jpg) center no-repeat;
+  background-size: cover;
+  color:white;
+}
+
 h2 {margin-top:40px}
 h2:before {content:"["}
 h2:after {content:"]"}
@@ -20,3 +26,7 @@ p {margin-top:10px;margin-bottom:10px}
 	  vertical-align: baseline !important;
 }
 
+img {
+  max-width:100%;
+  height:auto;
+}
