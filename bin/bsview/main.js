@@ -1,4 +1,35 @@
 window.onload = function () {
+
+    $('body').bsgdprcookies({
+      id: 'bs-gdpr-cookies-modal',
+      class: '',
+      title: 'Cookies & Privacy Policy',
+      backdrop: 'static',
+      message: 'このサイトでは広告の設定やアクセス解析（Google AdSense, Google Analytics）のために（という理由もありますがbashで書かれた本ページの限界を追求するために）Cookieを使用しています。もし同意いただけない場合はブラウザでクッキーを無効にして閲覧するか、ブラウザのxボタンでページを閉じてください。<br />This site uses cookies for advertising, access analysis, and experiments for this bash based web site. If you cannot accept our use of cookies, please disable cookies on your browser, or please close this page with x button on the tab or window.',
+    
+      // shows scrollbar
+      //message<a href="https://www.jqueryscript.net/tags.php?/Scroll/">Scroll</a>Bar: false,
+    
+      // max height
+      messageMaxHeightPercent: 25,
+    
+      // auto displays the modal after 1.5 seconds
+      delay: 1500,
+    
+      // 30 days
+      expireDays: 10,
+    
+      // options for read more link
+      moreLinkActive: false,
+      //moreLinkLabel: 'More informations..',
+      //moreLinkNewTab: true,
+      //moreLink: 'privacy-policy.php',
+    
+      // text for accept button
+      acceptButtonLabel: 'Accept'
+    
+    });
+
     tagcloud();
     lastArticles(10); 
     rankArticles(10); 
