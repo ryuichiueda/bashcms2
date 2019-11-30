@@ -17,4 +17,4 @@ uniq -c                                                                    |
 sort -k1,1 -r                                                              |
 head -n 50                                                                 |
 awk '{print "<a href=\"/key.cgi?key=" $2 "\">" $2  "(" $1 ")</a>&nbsp;&nbsp;" }' |
-sed '1iContent-Type: text/html\n\n<h1>Keywords</h1>'
+sed '1iContent-Type: text/html\n\n<h1>キーワード</h1>'
