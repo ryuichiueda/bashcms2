@@ -26,3 +26,7 @@ p {margin-top:10px;margin-bottom:10px}
 	  vertical-align: baseline !important;
 }
 
+img {
+  max-width:100%;
+  height:auto;
+}
