@@ -3,16 +3,6 @@ Content-type: text/html
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39565206-5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)};
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-39565206-5');
-    </script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -87,24 +77,12 @@ Content-type: text/html
     <div class="jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <h1>$sitetitle$</h1>
             <p>$subtitle$</p>
             $if(headline)$
             <p>info: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ </p>
             $endif$
-          </div>
-          <div class="col-md-4">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout-key="-go-p+33-1k-4o"
-                 data-ad-client="ca-pub-7242808947152948"
-                 data-ad-slot="2637185830"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
           </div>
         </div>
       </div>
@@ -143,20 +121,6 @@ Content-type: text/html
 	    $endif$
 	  </div>
 	  $body$
-
-          <br />
-          <!-- google ad -->
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-               style="display:block; text-align:center;"
-               data-ad-layout="in-article"
-               data-ad-format="fluid"
-               data-ad-client="ca-pub-7242808947152948"
-               data-ad-slot="6249127784"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-          <!-- google ad -->
 
           <br />
 	  <p id="prev-next-nav">$nav$</p>
