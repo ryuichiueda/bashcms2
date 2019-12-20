@@ -111,8 +111,6 @@ Content-type: text/html
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <!--3個col-md-4というclassの要素がある部分を書き換え-->
       <div class="row">
         <div class="col-md-8" id="article-body">
           <p id="article-info">
@@ -180,6 +178,13 @@ Content-type: text/html
           <aside id="last-articles"></aside>
           <br />
           <aside id="rank-articles"></aside>
+        </div>
+        <div class="row fixed-bottom" >
+          <div class="col-md-8">
+          </div>
+          <div class="col-md-4" id="toc">
+            $table-of-contents$
+          </div>
         </div>
       </div>
 
