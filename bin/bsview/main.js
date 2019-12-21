@@ -2,6 +2,8 @@ window.onload = function () {
     var toc = document.getElementById("toc");
     if(toc.getElementsByTagName("li").length < 2)
 	toc.innerHTML = "";
+    else
+        toc.getElementsByTagName("li")[0].getElementsByTagName("a")[0].innerHTML = "目次";
 
     $('body').bsgdprcookies({
       id: 'bs-gdpr-cookies-modal',
