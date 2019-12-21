@@ -1,4 +1,12 @@
 window.onload = function () {
+    var cookies = document.cookie;
+    if(cookies.indexOf("cookieconfirm=ok") < 0){
+        document.getElementById("cookiemention").style.visibility = "visible";
+        var expire = new Date();
+        expire.setMonth(expire.getMonth() + 3); 
+        document.cookie = "cookieconfirm=ok; expires=" + expire.toUTCString();
+    }
+
     lastArticles(10);
     rankArticles(10);
     linkKeywords();
@@ -63,3 +71,7 @@ function rankArticles(num){
     httpReq.open("GET",url,true);
     httpReq.send(null);
 }
+
+document.getElementById("cookieok").onclick = function() {
+    document.getElementById("cookiemention").hidden = true;
+};

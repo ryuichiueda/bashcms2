@@ -10,3 +10,7 @@ body {
 .fb_iframe_widget > span {
 	  vertical-align: baseline !important;
 }
+
+#cookiemention{
+  visibility:hidden;
+}
