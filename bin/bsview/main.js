@@ -5,6 +5,7 @@ window.onload = function () {
     else
         toc.getElementsByTagName("li")[0].getElementsByTagName("a")[0].innerHTML = "目次";
 
+	/*
     $('body').bsgdprcookies({
       id: 'bs-gdpr-cookies-modal',
       class: '',
@@ -34,6 +35,7 @@ window.onload = function () {
       acceptButtonLabel: 'Accept'
     
     });
+    */
 
     tagcloud();
     lastArticles(10); 
