@@ -33,3 +33,8 @@ img {
   background-color: white;
   margin: 0;
 }
+
+#cookiemention{
+  visibility:hidden;
+  font-size: 80%;
+}
