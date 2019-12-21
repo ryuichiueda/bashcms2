@@ -1,4 +1,7 @@
 window.onload = function () {
+    var toc = document.getElementById("toc");
+    if(toc.getElementsByTagName("li").length < 2)
+	toc.innerHTML = "";
 
     $('body').bsgdprcookies({
       id: 'bs-gdpr-cookies-modal',
@@ -124,3 +127,4 @@ function tagcloud(){
     httpReq.open("GET",url,true);
     httpReq.send(null);
 }
+

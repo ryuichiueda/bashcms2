@@ -139,6 +139,10 @@ Content-type: text/html
 	    <a style="white-space: nowrap" data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
 	    <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 	    $endif$
+	    <div id="toc">
+	      <h2>目次</h2>
+              $table-of-contents$
+	    </div>
 	  </div>
 	  $body$
 
@@ -179,6 +183,7 @@ Content-type: text/html
           <br />
           <aside id="rank-articles"></aside>
         </div>
+	<!--
 	<div class="row fixed-bottom">
           <div class="col-md-8">
           </div>
@@ -192,6 +197,7 @@ Content-type: text/html
               </div>
             </div>
           </div>
+	-->
         </div>
       </div>
 
