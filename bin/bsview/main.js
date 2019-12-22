@@ -14,6 +14,7 @@ window.onload = function () {
 
     tagcloud();
     lastArticles(10); 
+    lastRead(10); 
     rankArticles(10); 
     linkKeywords();
 //    fullSearch("");
@@ -28,6 +29,19 @@ function lastArticles(num){
         document.getElementById("last-articles").innerHTML = httpReq.responseText;
     }                               
     var url = "/last_articles.cgi?num=" + num;
+    httpReq.open("GET",url,true);   
+    httpReq.send(null);             
+}
+
+function lastRead(num){
+    var httpReq = new XMLHttpRequest();
+    httpReq.onreadystatechange = function(){
+        if(httpReq.readyState != 4 || httpReq.status != 200)
+            return;                 
+
+        document.getElementById("last-read").innerHTML = httpReq.responseText;
+    }                               
+    var url = "/last_read.cgi?num=" + num;
     httpReq.open("GET",url,true);   
     httpReq.send(null);             
 }
@@ -126,3 +140,7 @@ document.getElementById("cookieng").onclick = function() {
     expire.setMonth(expire.getMonth() + 3); 
     document.cookie = "cookieconfirm=ng; expires=" + expire.toUTCString();
 }
+
+
+setInterval(lastRead, 3000, 10);
+

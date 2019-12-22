@@ -10,7 +10,7 @@ echo
 
 tail -n "$num" $datadir/journals/journal_$(date "+%Y%m%d") |
 tac                                                        |
-awk '{print $2,$4}'                                        |
+awk '{print $3,$4}'                                        |
 while read s dir ; do
 	date "+%H:%M:%S" -d "@$s"
 	sed "s;</a>;&<br />;" "$datadir/$dir/link"
