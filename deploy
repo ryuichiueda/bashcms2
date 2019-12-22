@@ -4,7 +4,7 @@ source "$(dirname $0)/bin/conf"
 [ "$USER" = "root" ] # USER MUST BE ROOT
 
 ### CREATE DIRECTORIES ###
-mkdir -p "$logdir" "$datadir" "$datadir/counters"
+mkdir -p "$logdir" "$datadir" "$datadir/counters" "$datadir/journals"
 chown www-data:www-data "$logdir" "$datadir" "$datadir/counters"
 
 ### INSTALL THIS SYSTEM ###

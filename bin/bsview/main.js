@@ -1,9 +1,9 @@
 window.onload = function () {
-    if(document.cookie.indexOf("cookieconfirm=ok") < 0){
+    if(document.cookie.indexOf("cookieconfirm=") < 0){
+        window['ga-disable-UA-39565206-5'] = true;
         document.getElementById("cookiemention").style.visibility = "visible";
-        var expire = new Date();
-        expire.setMonth(expire.getMonth() + 3); 
-        document.cookie = "cookieconfirm=ok; expires=" + expire.toUTCString();
+    }else if(document.cookie.indexOf("cookieconfirm=ng") > 0){
+        window['ga-disable-UA-39565206-5'] = true;
     }
 
     var toc = document.getElementById("toc");
@@ -109,4 +109,20 @@ function tagcloud(){
 
 document.getElementById("cookieok").onclick = function() {
     document.getElementById("cookiemention").hidden = true;
-};
+    var expire = new Date();
+    expire.setMonth(expire.getMonth() + 3); 
+    document.cookie = "cookieconfirm=ok; expires=" + expire.toUTCString();
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-39565206-5');
+}
+
+document.getElementById("cookieng").onclick = function() {
+    document.getElementById("cookiemention").hidden = true;
+    var expire = new Date();
+    expire.setMonth(expire.getMonth() + 3); 
+    document.cookie = "cookieconfirm=ng; expires=" + expire.toUTCString();
+}

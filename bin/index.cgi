@@ -30,6 +30,9 @@ page: '$(sed 's;s/;=;' <<< $dir)'
 ---
 FIN
 
+REF=$(tr '\n' ' ' <<< ${HTTP_REFERER:=_} | sed 's/  */ /g')
+date "+%Y%m%d %H%M%S %s.%N $dir $REF" >> $datadir/journals/journal_$(date "+%Y%m%d")
+
 ### OUTPUT ###
 pandoc --toc --toc-depth=2 --template="$viewdir/template.html"	\
     -f markdown_github+yaml_metadata_block "$md" "$tmp-meta.yaml"   |
