@@ -18,7 +18,9 @@ tail -n "$num"                                         |
 tac                                                   |
 awk '{print $3,$4}'                                   |
 while read s dir ; do
+	echo "<span>"
 	date "+%H:%M:%S" -d "@$s"
+	echo "</span>"
 	sed "s;</a>;&<br />;" "$datadir/$dir/link"
 done
 

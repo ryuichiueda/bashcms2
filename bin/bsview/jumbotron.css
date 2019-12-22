@@ -19,6 +19,7 @@ p {margin-top:10px;margin-bottom:10px}
 #article-info {font-size:80%}
 #widgets h1{font-size:160%}
 #widgets a{font-size:80%}
+#widgets span{font-size:80%}
 
 .fb_iframe_widget > span {
 	  vertical-align: baseline !important;
