@@ -9,6 +9,7 @@ echo '<table class="table table-condensed">'
 find $datadir/journals/                          |
 grep journal_                                    |
 xargs wc -l                                      |
+grep journals                                    |
 sed 's@/.*_@@;s@..$@@'                           |
 awk '{a[$2]+=$1}END{for(k in a){print k,a[k]}}'  |
 awk '{print $1,$2,NR%2?"odd":"even"}'            |
