@@ -132,6 +132,8 @@ document.getElementById("cookieok").onclick = function() {
     gtag('js', new Date());
   
     gtag('config', 'UA-39565206-5');
+
+    location.reload();
 }
 
 document.getElementById("cookieng").onclick = function() {
