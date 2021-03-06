@@ -89,13 +89,14 @@ Content-type: text/html
     <div class="jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <h1>$sitetitle$</h1>
             <p>$subtitle$</p>
             $if(headline)$
             <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ </p>
             $endif$
           </div>
+	  <!--
           <div class="col-md-4">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <ins class="adsbygoogle"
@@ -108,6 +109,7 @@ Content-type: text/html
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
           </div>
+	  -->
         </div>
       </div>
     </div>
@@ -149,7 +151,7 @@ Content-type: text/html
 	  $body$
 
           <br />
-          <!-- google ad -->
+          <!-- 
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <ins class="adsbygoogle"
                style="display:block; text-align:center;"
@@ -160,7 +162,7 @@ Content-type: text/html
           <script>
                (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
-          <!-- google ad -->
+	  -->
 
           <br />
 	  <p id="prev-next-nav">$nav$</p>
