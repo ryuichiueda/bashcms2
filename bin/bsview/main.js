@@ -2,6 +2,10 @@ window.onload = function () {
     if(document.cookie.indexOf("cookieconfirm=") < 0){
         window['ga-disable-UA-39565206-5'] = true;
         document.getElementById("cookiemention").style.visibility = "visible";
+        document.getElementById("jumbotron").style.pointerEvents = "none";
+        document.getElementById("navbar").style.pointerEvents = "none";
+        document.getElementById("container").style.pointerEvents = "none";
+        document.getElementById("cookiemention").style.pointerEvents = "auto";
     }else if(document.cookie.indexOf("cookieconfirm=ng") > 0){
         window['ga-disable-UA-39565206-5'] = true;
     }
@@ -123,6 +127,10 @@ function tagcloud(){
 
 document.getElementById("cookieok").onclick = function() {
     document.getElementById("cookiemention").hidden = true;
+    document.getElementById("jumbotron").style.pointerEvents = "auto";
+    document.getElementById("navbar").style.pointerEvents = "auto";
+    document.getElementById("container").style.pointerEvents = "auto";
+
     var expire = new Date();
     expire.setMonth(expire.getMonth() + 3); 
     document.cookie = "cookieconfirm=ok; expires=" + expire.toUTCString();
@@ -136,12 +144,14 @@ document.getElementById("cookieok").onclick = function() {
     location.reload();
 }
 
+/*
 document.getElementById("cookieng").onclick = function() {
     document.getElementById("cookiemention").hidden = true;
     var expire = new Date();
     expire.setMonth(expire.getMonth() + 3); 
     document.cookie = "cookieconfirm=ng; expires=" + expire.toUTCString();
 }
+*/
 
 
 setInterval(lastRead, 3000, 10);
