@@ -1,7 +1,6 @@
 #!/bin/bash -euvx
 source "$(dirname $0)/conf"
 exec 2> "$logdir/$(basename $0).$(date +%Y%m%d_%H%M%S).$$"
-[ -n "${CONTENT_LENGTH}" ] && dd bs=${CONTENT_LENGTH} > /dev/null
 tmp=/tmp/$$
 
 echo 'Content-type: text/html'
@@ -13,7 +12,8 @@ git diff --name-status HEAD origin/master  |
 grep -Eo '(posts|pages)/[^/]+'             |
 sort -u                                    > $tmp-git-change
 
-git pull
+git fetch origin master
+git reset --hard origin/master
 
 ### CREATE TIMESTAMP FILES IF NOT EXIST ###
 cat $tmp-git-change |
@@ -117,5 +117,19 @@ proto=$(awk '$1=="protocol:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
 host=$(awk '$1=="host:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
 
 echo $proto"//"$host"/?"$page > "$datadir/last_post"
+
+### CONNECT LAST 10 POSTS ###
+tail "$datadir/post_list"                |
+tac                                      |
+cut -d' ' -f 3                           |
+while read d ; do
+	echo '<hr />'
+	sed -n '1,/^## /p' "$contentsdir/$d/main.md"            |
+	sed 's/^# /## /'                                        |
+	sed '$d'                                                |
+	cat - <(echo "[（続きを読む）](/?post=$(basename $d))") |
+	pandoc
+done                                    >> "$contentsdir/pages/top/main.md"
+
 
 rm -f $tmp-*
