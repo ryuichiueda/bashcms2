@@ -111,12 +111,12 @@ awk '$2~/^\*$|^#*$/{$2=""}{print}'		|
 awk 'NF>1'			> $tmp-all
 mv $tmp-all "$datadir/all_markdown"
 
-### MAKE LATEST POST ###
-page=$( tail -n 1 "$datadir/post_list" | cut -d' ' -f 3 | sed 's;s/;=;')
-proto=$(awk '$1=="protocol:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
-host=$(awk '$1=="host:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
-
-echo $proto"//"$host"/?"$page > "$datadir/last_post"
+#### MAKE LATEST POST ###
+#page=$( tail -n 1 "$datadir/post_list" | cut -d' ' -f 3 | sed 's;s/;=;')
+#proto=$(awk '$1=="protocol:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+#host=$(awk '$1=="host:"{print $2}' "$contentsdir/config.yaml" | tr -d \')
+#
+#echo $proto"//"$host"/?"$page > "$datadir/last_post"
 
 ### CONNECT LAST 10 POSTS ###
 tail "$datadir/post_list"                |
@@ -131,7 +131,7 @@ while read d ; do
 	pandoc
 done                                    >> "$contentsdir/pages/top/main.md"
 
-date -f - "+%Y-%m-%d %H:%M:%S"            |
-tee "$contentsdir/pages/top/created_time" > "$contentsdir/pages/top/modified_time"
+date "+%Y-%m-%d %H:%M:%S"                 |
+tee "$datadir/pages/top/created_time" > "$datadir/pages/top/modified_time"
 
 rm -f $tmp-*
