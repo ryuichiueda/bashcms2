@@ -131,5 +131,7 @@ while read d ; do
 	pandoc
 done                                    >> "$contentsdir/pages/top/main.md"
 
+date -f - "+%Y-%m-%d %H:%M:%S"            |
+tee "$contentsdir/pages/top/created_time" > "$contentsdir/pages/top/modified_time"
 
 rm -f $tmp-*
