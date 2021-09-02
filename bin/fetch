@@ -128,7 +128,8 @@ while read d ; do
 	sed 's/^# /## /'                                        |
 	sed '$d'                                                |
 	cat - <(echo "[（続きを読む）](/?post=$(basename $d))") |
-	pandoc
+	sed '/---/,/---/d'                                      |
+	pandoc -f markdown_github+raw_html 
 done                                    >> "$contentsdir/pages/top/main.md"
 
 date "+%Y-%m-%d %H:%M:%S"                 |
