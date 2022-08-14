@@ -95,8 +95,12 @@ Content-type: text/html
             <h1>$sitetitle$</h1>
             <p>$subtitle$</p>
             $if(headline)$
-            <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ </p>
+            <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ 
             $endif$
+	    $for(sociallinks)$
+	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
+	    $endfor$
+	    </p>
           </div>
 	  <!--
           <div class="col-md-4">
@@ -170,18 +174,13 @@ Content-type: text/html
 	  <p id="prev-next-nav">$nav$</p>
         </div>
 	<div class="col-md-4" id="widgets">
+	  <h2 id="activity">やり散らかし一覧</h2>
           <aside>
             <script src="https://apis.google.com/js/platform.js"></script>
             <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
             <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
             <br />
           </aside>
-          <aside>
-            $for(sociallinks)$
-	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$ fa-3x"></i></a>
-	    $endfor$
-          </aside>
-          <br />
           <aside>
             $if(sidecards)$
 	    $for(sidecards)$
@@ -201,6 +200,7 @@ Content-type: text/html
 	    $endfor$
             $endif$
           </aside>
+	  <h2 id="articles">記事いろいろ</h2>
           <aside id="last-read"></aside>
           <br />
           <aside id="tag-cloud"></aside>
