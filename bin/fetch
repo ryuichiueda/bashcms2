@@ -130,7 +130,15 @@ while read d ; do
 	cat - <(echo "[（続きを読む）](/?post=$(basename $d))") |
 	sed '/---/,/---/d'                                      |
 	pandoc -f markdown_github+raw_html 
-done                                    >> "$contentsdir/pages/top/main.md"
+done                                    >> $tmp-top10-connected
+
+(
+	sed -n '1,/<!--TOP-->/p' "$contentsdir/pages/top/main.md"
+	cat $tmp-top10-connected
+	sed -n '/<!--TOP-->/,$p' "$contentsdir/pages/top/main.md"
+) > $tmp-main 
+
+mv $tmp-main "$contentsdir/pages/top/main.md"
 
 date "+%Y-%m-%d %H:%M:%S"                 |
 tee "$datadir/pages/top/created_time" > "$datadir/pages/top/modified_time"
