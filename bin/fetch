@@ -125,7 +125,7 @@ cut -d' ' -f 3                           |
 while read d ; do
 	echo '<hr />'
 	sed -n '1,/^## /p' "$contentsdir/$d/main.md"            |
-	sed 's/^# /## /'                                        |
+	sed 's/^# /### /'                                       |
 	sed '$d'                                                |
 	cat - <(echo "[（続きを読む）](/?post=$(basename $d))") |
 	sed '/---/,/---/d'                                      |
@@ -133,9 +133,9 @@ while read d ; do
 done                                    >> $tmp-top10-connected
 
 (
-	sed -n '1,/<!--TOP-->/p' "$contentsdir/pages/top/main.md"
+	sed -n '1,/<!--TOP10-->/p' "$contentsdir/pages/top/main.md"
 	cat $tmp-top10-connected
-	sed -n '/<!--TOP-->/,$p' "$contentsdir/pages/top/main.md"
+	sed -n '/<!--TOP10-->/,$p' "$contentsdir/pages/top/main.md"
 ) > $tmp-main 
 
 mv $tmp-main "$contentsdir/pages/top/main.md"
