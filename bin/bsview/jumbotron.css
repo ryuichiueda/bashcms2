@@ -21,9 +21,10 @@ p {margin-top:10px;margin-bottom:10px}
 #widgets a{font-size:80%}
 #widgets span{font-size:80%}
 
+/*
 .fb_iframe_widget > span {
-	  vertical-align: baseline !important;
-}
+	  vertical-align: baseline !important; 
+}*/
 
 img {
   max-width:100%;
