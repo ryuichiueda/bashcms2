@@ -21,12 +21,12 @@ cat << FIN | tee /tmp/hogehoge > $tmp-meta.yaml
 ---
 created_time: '$(LANG=C date -f - < "$datadir/$dir/created_time")'
 modified_time: '$(LANG=C date -f - < "$datadir/$dir/modified_time")'
-title: '$(cat "$datadir/$dir/title")'
-nav: '$(cat "$datadir/$dir/nav")'
+title: '$(< "$datadir/$dir/title")'
+nav: '$(< "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
-$(cat $contentsdir/config.yaml )
+$(< $contentsdir/config.yaml )
 page: '$(sed 's;s/;=;' <<< $dir)'
-old: $(echo $(date +%Y%m%d) $(tr -d - < $datadir/$dir/modified_time | sed 's/ .*//') | awk '$1-$2>10000{print "この記事は最終更新日が"int(($1-$2)/10000)"年以上前のものです。"}')
+old: $(echo $(date +%Y%m%d) $(tr -d - < $datadir/$dir/modified_time) | awk '$1-$2>10000{print "この記事は最終更新日が"int(($1-$2)/10000)"年以上前のものです。"}')
 ---
 FIN
 
