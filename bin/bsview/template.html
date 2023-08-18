@@ -91,7 +91,7 @@ Content-type: text/html
     <div class="jumbotron" id="jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-8">
             <h1>$sitetitle$</h1>
             <p>$subtitle$</p>
             $if(headline)$
@@ -102,6 +102,19 @@ Content-type: text/html
 	    $endfor$
 	    </p>
           </div>
+          <div class="col-md-4">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948" crossorigin="anonymous"></script>
+  	  <!-- upperright -->
+            <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-7242808947152948"
+              data-ad-slot="1700080238"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </div>
       </div>
     </div>
@@ -111,7 +124,7 @@ Content-type: text/html
         <div class="col-md-8" id="article-body">
           <p id="article-info">
 	  <strong style="font-size:120%">$created_time$</strong> (modified: $modified_time$)<br />
-	  views: $views$, keywords: <span id="keywords">$Keywords$</span>
+	  views: $views$, keywords:<span id="keywords">$Keywords$</span> <span id="old" style="background-color:yellow">$old$</span> 
           </p>
 	  <div id="social-buttons">
 	    $if(misskey)$
@@ -146,19 +159,6 @@ Content-type: text/html
 	  $body$
 
           <br />
-          <!-- 
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-               style="display:block; text-align:center;"
-               data-ad-layout="in-article"
-               data-ad-format="fluid"
-               data-ad-client="ca-pub-7242808947152948"
-               data-ad-slot="6249127784"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-	  -->
-
           <br />
 	  <p id="prev-next-nav">$nav$</p>
         </div>

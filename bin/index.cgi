@@ -26,6 +26,7 @@ nav: '$(cat "$datadir/$dir/nav")'
 views: '$(ls -l "$counter" | cut -d' ' -f 5)'
 $(cat $contentsdir/config.yaml )
 page: '$(sed 's;s/;=;' <<< $dir)'
+old: $(echo $(date +%Y%m%d) $(tr -d - < $datadir/$dir/modified_time | sed 's/ .*//') | awk '$1-$2>10000{print "この記事は最終更新日が"int(($1-$2)/10000)"年以上前のものです。"}')
 ---
 FIN
 
