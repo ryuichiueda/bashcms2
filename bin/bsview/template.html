@@ -100,18 +100,17 @@ Content-type: text/html
 	    </p>
           </div>
           <div class="col-md-2">
-            <aside>
-	      <p>SNSやウェブサイト: </p>
+            <div class="panel panel-default">
+              <p>follow me: </p>
               <script src="https://apis.google.com/js/platform.js"></script>
               <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
               <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
-	      <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
-	      $for(sociallinks)$
-	      <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
-	      $endfor$
-	      </div>
-              <br />
-            </aside>
+              <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
+                $for(sociallinks)$
+                <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
+                $endfor$
+              </div>
+            </div>
           </div>
         </div>
       </div>
