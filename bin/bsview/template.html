@@ -97,12 +97,21 @@ Content-type: text/html
             $if(headline)$
             <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ 
             $endif$
-	    $for(sociallinks)$
-	    <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
-	    $endfor$
 	    </p>
           </div>
           <div class="col-md-2">
+            <aside>
+	      <p>SNSやウェブサイト: </p>
+              <script src="https://apis.google.com/js/platform.js"></script>
+              <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
+              <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
+	      <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
+	      $for(sociallinks)$
+	      <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
+	      $endfor$
+	      </div>
+              <br />
+            </aside>
           </div>
         </div>
       </div>
@@ -165,12 +174,6 @@ Content-type: text/html
             </script>
           </aside>
 	  <h2 id="activity">やり散らかし一覧</h2>
-          <aside>
-            <script src="https://apis.google.com/js/platform.js"></script>
-            <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
-            <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
-            <br />
-          </aside>
           <aside>
             $if(sidecards)$
 	    $for(sidecards)$
