@@ -95,9 +95,12 @@ Content-type: text/html
           <div class="col-md-7">
             <h1>$sitetitle$</h1>
             $if(headline)$
-            <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ 
-            $endif$
+            <p><i class="fa-solid fa-volume-high"></i>&nbsp;
+	      $for(headline)$
+	      <span>$headline.text$&nbsp;/&nbsp;</span>
+	      $endfor$ 
 	    </p>
+            $endif$
 	    <p><i class="fa-solid fa-user-plus"></i> 
               $for(sociallinks)$
               <a href="$sociallinks.href$">$sociallinks.icon$</a>/
