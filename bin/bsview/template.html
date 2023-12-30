@@ -31,7 +31,8 @@ Content-type: text/html
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 
     <!-- Font Awesome CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
+    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
 
     <!-- highlight.js -->
     <link rel="stylesheet"
@@ -162,13 +163,13 @@ Content-type: text/html
           <aside>
 	    <h2 id="thissite">このサイトについて</h2>
             <p>$subtitle$</p>
-            <h3>フォローお願いします</h3>
+            <h3><i class="fa-solid fa-user-plus"></i>フォローお願いします</h3>
             <script src="https://apis.google.com/js/platform.js"></script>
             <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
             <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
             <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
               $for(sociallinks)$
-              <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
+              <a href="$sociallinks.href$"><i class="fa-brands $sociallinks.icon$"></i></a>
               $endfor$
             </div>
 	   
