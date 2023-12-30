@@ -98,6 +98,11 @@ Content-type: text/html
             <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ 
             $endif$
 	    </p>
+	    <p><i class="fa-solid fa-user-plus"></i> 
+              $for(sociallinks)$
+              <a href="$sociallinks.href$">$sociallinks.icon$</a>/
+              $endfor$
+	    </p>
           </div>
           <div class="col-md-5">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948" crossorigin="anonymous"></script>
@@ -230,7 +235,7 @@ Content-type: text/html
       <hr>
 
       <footer>
-        <p>$Copyright$ <a href="/?page=privacy">このサイトについて</a> / <img width="22" src="/pages/top/misskey.png" />ロゴは<a href="https://misskey-hub.net/ja/brand-assets/">Misske Hubのアセット集<i class="fa fa-external-link"></i></a>にあるものをCC BY-NC-SAのライセンスの下で利用しています。</p>
+        <p>$Copyright$ <a href="/?page=privacy">プライバシーポリシー等</a> / <img width="22" src="/pages/top/misskey.png" />ロゴは<a href="https://misskey-hub.net/ja/brand-assets/">Misske Hubのアセット集<i class="fa fa-external-link"></i></a>にあるものをCC BY-NC-SAのライセンスの下で利用しています。</p>
       </footer>
     </div> <!-- /container -->
 
