@@ -40,3 +40,9 @@ img {
   visibility:hidden;
   font-size: 80%;
 }
+
+.jumbotron {
+  background:url(/pages/top/top_cat.jpg) center no-repeat;
+  background-size: cover;
+  color:white;
+}
