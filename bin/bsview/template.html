@@ -91,25 +91,26 @@ Content-type: text/html
     <div class="jumbotron" id="jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-7">
             <h1>$sitetitle$</h1>
-            <p>$subtitle$</p>
             $if(headline)$
             <p>お知らせ: $for(headline)$ <span>$headline.text$&nbsp;/&nbsp;</span> $endfor$ 
             $endif$
 	    </p>
           </div>
-          <div class="col-md-2">
-            <div class="panel panel-default">
-              <script src="https://apis.google.com/js/platform.js"></script>
-              <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
-              <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
-              <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
-                $for(sociallinks)$
-                <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
-                $endfor$
-              </div>
+          <div class="col-md-5">
+            <h4>このサイトについて</h4>
+            <p>$subtitle$</p>
+            <h5>フォロー・登録おねがいします！</h5>
+            <script src="https://apis.google.com/js/platform.js"></script>
+            <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
+            <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
+            <div><a href="https://misskey.io/@ryuichiueda">Misskey.io</a>/<a href="https://mi.shellgei.org/@ru">しぇるげいすきー</a>/<a href="https://mi0.robotician.jp/@ru">roboticskey</a>/
+              $for(sociallinks)$
+              <a href="$sociallinks.href$"><i class="fa $sociallinks.icon$"></i></a>
+              $endfor$
             </div>
+
           </div>
         </div>
       </div>
@@ -122,6 +123,12 @@ Content-type: text/html
 	  <strong style="font-size:120%">$created_time$</strong> (modified: $modified_time$)<br />
 	  views: $views$, keywords:<span id="keywords">$Keywords$</span> <span id="old" style="background-color:yellow">$old$</span> 
           </p>
+	  
+	  <div id="toc">
+            $table-of-contents$
+	    <hr />
+	  </div>
+	  $body$
 	  <div id="social-buttons">
 	    $if(misskey)$
 	    <a class="btn text-white" href="https://misskeyshare.link/share.html?text=" style="background-color: #2b90d9;" onclick="window.open(this.href+encodeURI(decodeURI(document.title))+'&url='+encodeURI(decodeURI(location.href)), '', 'width=500,height=400'); return false;"><img src="https://misskeyshare.link/image/mi.webp" style="width: 1em;"> ノート</a>
@@ -147,12 +154,7 @@ Content-type: text/html
 	    <a style="white-space: nowrap" data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
 	    <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 	    $endif$
-	    <div id="toc">
-              $table-of-contents$
-	      <hr />
-	    </div>
 	  </div>
-	  $body$
 
           <br />
           <br />
