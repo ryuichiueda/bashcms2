@@ -32,7 +32,6 @@ Content-type: text/html
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 
     <!-- Font Awesome CSS -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
     <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
 
     <!-- highlight.js -->
@@ -43,9 +42,8 @@ Content-type: text/html
     <link href="/bsview/jumbotron.css" rel="stylesheet">
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948"
-     crossorigin="anonymous"></script>
+
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948" crossorigin="anonymous"></script>-->
   </head>
 
   <body>
@@ -93,7 +91,7 @@ Content-type: text/html
     <div class="jumbotron" id="jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-8">
             <h1>$sitetitle$</h1>
             $if(headline)$
             <p><i class="fa-solid fa-volume-high"></i>&nbsp;
@@ -102,23 +100,26 @@ Content-type: text/html
 	      $endfor$ 
 	    </p>
             $endif$
+	    <!--
 	    <p><i class="fa-solid fa-user-plus"></i> 
               $for(sociallinks)$
               <a href="$sociallinks.href$">$sociallinks.icon$</a>/
               $endfor$
 	    </p>
+	    -->
           </div>
-          <div class="col-md-5">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-7242808947152948"
-              data-ad-slot="1700080238"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+          <div class="col-md-4">
+
+	    <p>$subtitle$</p>
+	    <!-- <h3><i class="fa-solid fa-user-plus"></i>フォローはこちらから</h3> -->
+            <script src="https://apis.google.com/js/platform.js"></script>
+            <div class="g-ytsubscribe" data-channel="ryuichiueda" data-layout="full" data-count="default"></div>
+            <div class="g-ytsubscribe" data-channelid="UCNnuBjHrb2UYBUi0I5otmjQ" data-layout="full" data-count="default"></div>
+	    <div>
+              $for(sociallinks)$
+              <a href="$sociallinks.href$">$sociallinks.icon$</a>/
+              $endfor$
+            </div>
           </div>
         </div>
       </div>
@@ -164,6 +165,7 @@ Content-type: text/html
 	    $endif$
 	  </div>
 
+	  <!--
 	  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7242808947152948"
                   crossorigin="anonymous"></script>
             <ins class="adsbygoogle"
@@ -174,11 +176,13 @@ Content-type: text/html
           <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
+	  -->
 
           <br />
 	  <p id="prev-next-nav">$nav$</p>
         </div>
 	<div class="col-md-4" id="widgets">
+		<!--
           <aside>
             <h2 id="thissite">このサイトについて</h2>
             <p>$subtitle$</p>
@@ -193,6 +197,7 @@ Content-type: text/html
             </div>
 	   
           </aside>
+	  -->
 	  <h2 id="activity">やり散らかし一覧</h2>
           <aside>
             $if(sidecards)$
