@@ -165,6 +165,7 @@ cat << FIN > $rssdir/rss20.xml
         <title>上田ブログ</title>
         <link>https://ueda.tech</link>
         <description>上田の近況です。</description>
+        <lastBuildDate>$(TZ= LANG=C date "+%a, %d %b %Y %H:%M:%S GMT")</lastBuildDate>
 $( cat $tmp-rss )
     </channel>
 </rss>
